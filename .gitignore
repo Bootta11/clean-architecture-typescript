@@ -1,0 +1,6 @@
+.env
+.envault.json
+
+/node_modules/
+/logs/
+/coverage
