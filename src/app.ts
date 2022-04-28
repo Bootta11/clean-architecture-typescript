@@ -8,12 +8,11 @@ import logger from "./frameworks/common/Logger";
 import httpContext from "express-http-context";
 import {v4 as uuid} from 'uuid'
 import proxyHandler from "./frameworks/web/proxy";
+import config from "./config";
 
 const app = express();
-const port = process.env.SERVER_PORT || 3000;
 
 projectDependencies.DatabaseService.initDatabase().then(() => {
-
     app.use(httpContext.middleware)
     app.use((req, res, next) => {
         let reqId = uuid();
@@ -35,7 +34,7 @@ projectDependencies.DatabaseService.initDatabase().then(() => {
 
     app.use(ErrorHandler);
 
-    app.listen(port, () => logger.log(`http://localhost:${port}`));
+    app.listen(config.serverPort, () => logger.log(`http://localhost:${config.serverPort}`));
 
 }, (err) => {
     logger.log(`db is not ready, err:${err}`);
