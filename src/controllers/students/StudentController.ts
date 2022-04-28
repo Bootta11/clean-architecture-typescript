@@ -4,14 +4,17 @@ import GetAllStudents from '../../application/use_cases/students/GetAllStudents'
 import GetStudent from '../../application/use_cases/students/GetStudent';
 import AddEnrollment from '../../application/use_cases/students/AddEnrollment';
 import InMemoryStudentRepository from "../../frameworks/persistance/InMemory/InMemoryStudentRepository";
+import autoBind from 'class-autobind';
 
 export default class StudentController {
     private studentRepository: InMemoryStudentRepository;
     private crmService: any;
 
     constructor(dependencies) {
-        this.studentRepository = dependencies.DatabaseService;
+        this.studentRepository = dependencies.DatabaseService.studentRepository;
         this.crmService = dependencies.CrmServices;
+
+        autoBind(this)
     }
 
     addNewStudent(req, res, next) {

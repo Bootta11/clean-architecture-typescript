@@ -5,21 +5,27 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./",
-    "start": "nodemon e ts,js src/app.ts",
-    "test": "jest"
+    "start": "nodemon ./src/app.ts",
+    "test": "jest",
+    "build": "tsc",
+    "serve": "node dist/app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "app-root-path": "^2.1.0",
     "body-parser": "^1.18.3",
-    "dotenv": "^16.0.0",
+    "class-autobind": "^0.1.4",
+    "dotenv-defaults": "^5.0.0",
     "elasticsearch": "^15.4.1",
     "express": "^4.16.4",
+    "express-http-context": "^1.2.4",
+    "express-http-proxy": "^1.6.3",
     "joi": "^14.3.1",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.15",
     "ts-node": "^10.7.0",
+    "uuid": "^8.3.2",
     "winston": "^3.2.1"
   },
   "devDependencies": {

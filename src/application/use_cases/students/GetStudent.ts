@@ -1,5 +1,5 @@
 import {IUseCase} from "../IUseCase";
-import IStudentRepository from "../../contracts/StudentRepository";
+import IStudentRepository from "../../contracts/IStudentRepository";
 
 export interface GetStudentRequest {
     studentId: number,

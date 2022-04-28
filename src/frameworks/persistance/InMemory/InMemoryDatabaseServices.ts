@@ -3,7 +3,7 @@ import InMemoryStudentRepository from './InMemoryStudentRepository';
 import Student from '../../../entities/Student';
 
 export default class InMemoryDatabaseServices implements IDatabaseServices {
-    private studentRepository: InMemoryStudentRepository;
+    public studentRepository: InMemoryStudentRepository;
 
     constructor() {
         this.studentRepository = new InMemoryStudentRepository();
