@@ -1,9 +1,9 @@
+import 'dotenv-defaults/config';
 import express from 'express';
 import bodyParser from "body-parser";
 import routes from './frameworks/web/routes';
 import projectDependencies from './config/projectDependencies';
 import ErrorHandler from "./frameworks/common/ErrorHandler";
-import 'dotenv-defaults/config';
 import logger from "./frameworks/common/Logger";
 import httpContext from "express-http-context";
 import {v4 as uuid} from 'uuid'
