@@ -1,5 +1,5 @@
-import BaseMsProxy from "./BaseMsProxy";
-import config from "../../../config";
+import BaseMsProxy from './BaseMsProxy.js';
+import config from '../../../config/index.js';
 
 export default class AlgorithmsMsProxy extends BaseMsProxy{
     getHost(): string {

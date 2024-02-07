@@ -1,4 +1,4 @@
-import logger from'./Logger';
+import logger from'./Logger.js';
 
 export default (err, req, res, next) => {
     // set locals, only providing error in development

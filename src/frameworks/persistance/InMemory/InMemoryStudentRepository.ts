@@ -1,5 +1,5 @@
-import  IStudentRepository from '../../../application/contracts/IStudentRepository';
-import Student from "../../../entities/Student";
+import  IStudentRepository from '../../../application/contracts/IStudentRepository.js';
+import Student from '../../../entities/Student.js';
 
 export default class InMemoryStudentRepository implements IStudentRepository {
     private readonly students;
@@ -92,4 +92,4 @@ export default class InMemoryStudentRepository implements IStudentRepository {
 
         return student;
     }
-};
+}

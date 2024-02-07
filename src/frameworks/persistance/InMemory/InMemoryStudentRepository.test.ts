@@ -1,29 +1,29 @@
-import InMemoryStudentRepository from "./InMemoryStudentRepository";
-import Student from "../../../entities/Student";
+import InMemoryStudentRepository from './InMemoryStudentRepository.js';
+import Student from '../../../entities/Student.js';
 
-const studentRepository = new InMemoryStudentRepository()
+const studentRepository = new InMemoryStudentRepository();
 
 test('add student', async () => {
-    let student = new Student('fn', 'ln', 'e@mail.com', [])
-    let got = await studentRepository.add(student)
+    const student = new Student('fn', 'ln', 'e@mail.com', []);
+    const got = await studentRepository.add(student);
 
-    expect(got).toEqual(student)
-})
+    expect(got).toEqual(student);
+});
 
 test('update student', async () => {
-    let student = new Student('fn', 'ln', 'e@mail.com', [])
-    await studentRepository.add(student)
-    student.firstName = 'updated_fn'
-    let got = await studentRepository.update(student)
+    const student = new Student('fn', 'ln', 'e@mail.com', []);
+    await studentRepository.add(student);
+    student.firstName = 'updated_fn';
+    const got = await studentRepository.update(student);
 
-    expect(got).toEqual(student)
-})
+    expect(got).toEqual(student);
+});
 
 test('delete student', async () => {
-    let student = new Student('fn', 'ln', 'e@mail.com', [])
-    let addedStudent = await studentRepository.add(student)
+    const student = new Student('fn', 'ln', 'e@mail.com', []);
+    const addedStudent = await studentRepository.add(student);
 
-    let got = await studentRepository.delete(addedStudent.id)
+    const got = await studentRepository.delete(addedStudent.id);
 
-    expect(got).toEqual(true)
-})
+    expect(got).toEqual(true);
+});

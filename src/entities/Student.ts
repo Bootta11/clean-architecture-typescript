@@ -14,4 +14,4 @@ export default class Student {
         this.email = email;
         this.enrollments = enrollments;
     }
-};
+}

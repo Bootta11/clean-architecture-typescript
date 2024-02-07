@@ -6,4 +6,4 @@ export default class Course {
         this.id = id;
         this.name = name;
     }
-};
+}

@@ -1,4 +1,4 @@
-import ICrmServices from '../../application/contracts/ICrmServices';
+import ICrmServices from '../../application/contracts/ICrmServices.js';
 
 export default class UniversityCrmServices implements ICrmServices {
 
@@ -6,4 +6,4 @@ export default class UniversityCrmServices implements ICrmServices {
         return Promise.resolve('external crm system was notified');
     }
 
-};
+}

@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "lint": "eslint ./",
-    "start": "nodemon ./src/app.ts",
+    "start": "nodemon -x tsx src/app.ts",
     "test": "jest",
     "build": "tsc",
     "serve": "node dist/app.js"
@@ -34,16 +35,22 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
     "@types/jest": "^27.4.1",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "babel-jest": "^28.0.1",
-    "eslint": "^5.13.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "jest": "^28.0.1"
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "jest": "^28.0.1",
+    "tsx": "^4.7.0"
   },
   "nodemonConfig": {
     "restartable": "rs",
     "ignore": [
-      "node_modules/**/node_modules"
+      "node_modules/**/node_modules",
+      "dist"
     ],
     "delay": "2500",
     "env": {

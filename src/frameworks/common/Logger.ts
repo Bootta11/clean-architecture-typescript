@@ -1,6 +1,6 @@
-import winston from 'winston'
+import winston from 'winston';
 import appRoot from 'app-root-path';
-import httpContext from "express-http-context";
+import httpContext from 'express-http-context';
 
 const options = {
     file: {
@@ -35,46 +35,46 @@ class Logger {
 
     prepareLogData(message:string, meta:any): {message, meta} {
         if(!meta) {
-            meta = {}
+            meta = {};
         }
 
         if(typeof meta !== 'object') {
             meta = {
                 value: meta
-            }
+            };
         }
 
-        meta['reqId'] = httpContext.get('reqId')
+        meta['reqId'] = httpContext.get('reqId');
 
         return {
             message,
             meta
-        }
+        };
     }
 
     info(message, meta?) {
-        const preparedData = this.prepareLogData(message, meta)
+        const preparedData = this.prepareLogData(message, meta);
 
-        this.logger.info(preparedData.message, preparedData.meta)
+        this.logger.info(preparedData.message, preparedData.meta);
     }
 
     error(message, meta?) {
-        const preparedData = this.prepareLogData(message, meta)
+        const preparedData = this.prepareLogData(message, meta);
 
-        this.logger.error(preparedData.message, preparedData.meta)
+        this.logger.error(preparedData.message, preparedData.meta);
     }
 
     log(message, meta?) {
-        const preparedData = this.prepareLogData(message, meta)
+        const preparedData = this.prepareLogData(message, meta);
 
-        this.logger.info(preparedData.message, preparedData.meta)
+        this.logger.info(preparedData.message, preparedData.meta);
     }
 
     debug(message, meta?) {
-        const preparedData = this.prepareLogData(message, meta)
+        const preparedData = this.prepareLogData(message, meta);
 
-        this.logger.debug(preparedData.message, preparedData.meta)
+        this.logger.debug(preparedData.message, preparedData.meta);
     }
 }
 
-export default new Logger()
+export default new Logger();

@@ -1,7 +1,7 @@
-import {IUseCase} from "../IUseCase";
-import IStudentRepository from "../../contracts/IStudentRepository";
-import ICrmServices from "../../contracts/ICrmServices";
-import Student from "../../../entities/Student";
+import {IUseCase} from '../IUseCase.js';
+import IStudentRepository from '../../contracts/IStudentRepository.js';
+import ICrmServices from '../../contracts/ICrmServices.js';
+import Student from '../../../entities/Student.js';
 
 export interface AddStudentRequest {
     firstName: string,
@@ -10,7 +10,7 @@ export interface AddStudentRequest {
     enrollments: string[]
 }
 
-export default class AddStudentUseCase implements IUseCase<AddStudentRequest, any> {
+export default class AddStudentUseCase implements IUseCase<AddStudentRequest, unknown> {
     private studentRepository: IStudentRepository;
     private crmServices: ICrmServices;
 
@@ -19,7 +19,7 @@ export default class AddStudentUseCase implements IUseCase<AddStudentRequest, an
         this.crmServices = crmServices;
     }
 
-    async execute(request?: AddStudentRequest): Promise<any> {
+    async execute(request?: AddStudentRequest): Promise<unknown> {
         const student = await this.studentRepository.getByEmail(request?.email);
 
         if (!request?.firstName || !request?.lastName || !request?.email) {

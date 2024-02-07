@@ -1,5 +1,5 @@
 import express from 'express';
-import students from './students';
+import students from './students.js';
 
 const apiRouter = (dependencies) => {
     const routes = express.Router();

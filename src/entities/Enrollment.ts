@@ -6,4 +6,4 @@ export default class Enrollment {
         this.course = course;
         this.grade = grade;
     }
-};
+}

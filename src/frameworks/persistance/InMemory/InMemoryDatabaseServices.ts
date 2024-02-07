@@ -1,6 +1,6 @@
-import IDatabaseServices from '../../../application/contracts/IDatabaseServices';
-import InMemoryStudentRepository from './InMemoryStudentRepository';
-import Student from '../../../entities/Student';
+import IDatabaseServices from '../../../application/contracts/IDatabaseServices.js';
+import InMemoryStudentRepository from './InMemoryStudentRepository.js';
+import Student from '../../../entities/Student.js';
 
 export default class InMemoryDatabaseServices implements IDatabaseServices {
     public studentRepository: InMemoryStudentRepository;
@@ -20,4 +20,4 @@ export default class InMemoryDatabaseServices implements IDatabaseServices {
         await this.studentRepository.addEnrollment(sampleStudent.id, { course: { id: 1, name: 'math' }, grade: 95 });
 
     }
-};
+}

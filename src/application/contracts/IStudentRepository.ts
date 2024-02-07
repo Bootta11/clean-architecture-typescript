@@ -1,9 +1,11 @@
+import Student from '../../entities/Student.js';
+
 export default interface IStudentRepository {
-    add(studentInstance): Promise<any>;
-    update(studentInstance): Promise<any>;
-    delete(studentInstance): Promise<any>;
-    getById(StudentId): Promise<any>;
-    getByEmail(StudentId): Promise<any>;
-    getAll(): Promise<any>;
-    addEnrollment(studentInstance, enrollment): Promise<any>;
-};
+    add(studentInstance): Promise<Student>;
+    update(studentInstance): Promise<unknown>;
+    delete(studentInstance): Promise<unknown>;
+    getById(StudentId): Promise<unknown>;
+    getByEmail(StudentId): Promise<unknown>;
+    getAll(): Promise<unknown>;
+    addEnrollment(studentInstance, enrollment): Promise<unknown>;
+}

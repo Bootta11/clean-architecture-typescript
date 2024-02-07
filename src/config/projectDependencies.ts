@@ -1,5 +1,5 @@
-import InMemoryDatabaseServices from '../frameworks/persistance/InMemory/InMemoryDatabaseServices';
-import UniversityCrmServices from '../frameworks/externalServices/UniversityCrmServices';
+import InMemoryDatabaseServices from '../frameworks/persistance/InMemory/InMemoryDatabaseServices.js';
+import UniversityCrmServices from '../frameworks/externalServices/UniversityCrmServices.js';
 
 const projectDependencies = {
     DatabaseService: new InMemoryDatabaseServices(),
