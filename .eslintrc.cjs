@@ -44,18 +44,23 @@ module.exports = {
             'error',
             4
         ],
-        'linebreak-style': [
-            'error',
-            'unix'
-        ],
         'quotes': [
             'error',
-            'single'
+            'single',
+            {
+                'avoidEscape': true,
+                'allowTemplateLiterals': true
+            }
         ],
         'n/file-extension-in-import': [
             2, 'always'
         ],
-        'no-extra-semi': 'off'
-    
+        'no-extra-semi': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+        'no-unused-vars': ['error', { 
+            'argsIgnorePattern': '^_',
+            'varsIgnorePattern': '^_',
+            'caughtErrorsIgnorePattern': '^_' 
+        }],
     },
 };

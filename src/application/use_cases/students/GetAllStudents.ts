@@ -1,7 +1,7 @@
 import IStudentRepository from '../../contracts/IStudentRepository.js';
 import {IUseCase} from '../IUseCase.js';
 
-export default class GetAllStudentsUseCase implements IUseCase<any, any>{
+export default class GetAllStudentsUseCase implements IUseCase<unknown, unknown>{
     private studentRepository: IStudentRepository;
 
     constructor(studentRepository: IStudentRepository) {

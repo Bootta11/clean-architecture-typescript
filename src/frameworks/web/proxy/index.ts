@@ -1,7 +1,7 @@
 import AlgorithmsMsProxy from './AlgorithmsMsProxy.js';
 
 const proxyList = {
-    //'/api/ams': new AlgorithmsMsProxy(),
+    '/api/ams': new AlgorithmsMsProxy(),
 };
 
 const proxyHandler = (app) => {

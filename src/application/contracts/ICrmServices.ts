@@ -1,3 +1,3 @@
 export default interface ICrmServices {
-    notify(studentDetails): Promise<unknown>;
+    notify(_studentDetails): Promise<unknown>;
 };

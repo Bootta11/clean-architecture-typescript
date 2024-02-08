@@ -1,6 +1,6 @@
 import httpProxy from 'express-http-proxy';
 import httpContext from 'express-http-context';
-import logger from '../../common/Logger';
+import logger from '../../common/Logger.js';
 
 export default abstract class BaseMsProxy {
     abstract getHost(): string;
@@ -12,7 +12,7 @@ export default abstract class BaseMsProxy {
         return '/api' + parts[0] + (queryString ? '?' + queryString : '');
     }
 
-    logProxyRequest(proxyRes, proxyResData, userReq, userRes) {
+    logProxyRequest(proxyRes, proxyResData, userReq, _userRes) {
         logger.info('proxy response log', {
             statusCode: proxyRes.statusCode,
             responseData: proxyResData.toString(),
@@ -22,7 +22,6 @@ export default abstract class BaseMsProxy {
     }
 
     generateHttpProxy() {
-        const _this = this;
         return httpProxy(this.getHost(), {
             proxyReqPathResolver: this.getForwardPath,
             proxyReqOptDecorator: function(proxyReqOpts) {
@@ -30,8 +29,8 @@ export default abstract class BaseMsProxy {
 
                 return proxyReqOpts;
             },
-            userResDecorator: function (proxyRes, proxyResData, userReq, userRes) {
-                _this.logProxyRequest(proxyRes, proxyResData, userReq, userRes);
+            userResDecorator: (proxyRes, proxyResData, userReq, userRes) => {
+                this.logProxyRequest(proxyRes, proxyResData, userReq, userRes);
 
                 return proxyResData;
             },

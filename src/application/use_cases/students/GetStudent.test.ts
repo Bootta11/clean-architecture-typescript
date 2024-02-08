@@ -6,7 +6,7 @@ jest.mock('../../../frameworks/persistance/InMemory/InMemoryStudentRepository');
 
 test('GetStudentUseCase', async () => {
     const studentRepositoryMock = new InMemoryStudentRepository();
-    studentRepositoryMock.getById = (studentId): Promise<any> => {
+    studentRepositoryMock.getById = (studentId): Promise<unknown> => {
         return Promise.resolve(new Student(
             `student${studentId}_firstname`,
             `student${studentId}_lastname`,

@@ -33,7 +33,7 @@ class Logger {
         });
     }
 
-    prepareLogData(message:string, meta:any): {message, meta} {
+    prepareLogData(message:string, meta:unknown): {message, meta} {
         if(!meta) {
             meta = {};
         }

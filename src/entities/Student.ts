@@ -1,10 +1,10 @@
 export default class Student {
     public id: null;
-    public firstName: any;
-    public lastName: any;
+    public firstName: unknown;
+    public lastName: unknown;
     public fullName: string;
-    public email: any;
-    public enrollments: any;
+    public email: unknown;
+    public enrollments: unknown;
 
     constructor(firstName, lastName, email, enrollments) {
         this.id = null;

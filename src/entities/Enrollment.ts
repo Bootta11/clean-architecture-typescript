@@ -1,6 +1,6 @@
 export default class Enrollment {
-    public course: any;
-    public grade: any;
+    public course: unknown;
+    public grade: unknown;
 
     constructor(course, grade) {
         this.course = course;
