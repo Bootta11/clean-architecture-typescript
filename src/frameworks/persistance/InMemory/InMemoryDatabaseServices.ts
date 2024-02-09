@@ -1,15 +1,15 @@
-import IDatabaseServices from '../../../application/contracts/IDatabaseServices.js';
 import InMemoryStudentRepository from './InMemoryStudentRepository.js';
 import Student from '../../../entities/Student.js';
+import IProjectDependency from '../../../application/contracts/IProjectDependency.js';
 
-export default class InMemoryDatabaseServices implements IDatabaseServices {
+export default class InMemoryDatabaseServices implements IProjectDependency {
     public studentRepository: InMemoryStudentRepository;
 
     constructor() {
         this.studentRepository = new InMemoryStudentRepository();
     }
 
-    async initDatabase() {
+    async init() {
         this.seedData();
     }
 
