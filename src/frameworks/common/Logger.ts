@@ -1,6 +1,7 @@
 import winston from 'winston';
 import appRoot from 'app-root-path';
 import httpContext from 'express-http-context';
+import config from '../../config/index.js';
 
 const options = {
     file: {
@@ -17,6 +18,7 @@ const options = {
         handleExceptions: true,
         json: false,
         colorize: true,
+        prettyPrint: true,
     },
 };
 
@@ -24,7 +26,13 @@ class Logger {
     private logger: winston.Logger;
 
     constructor() {
+        let winstonFormat = winston.format.json();
+        if (config.env === 'development') {
+            winstonFormat = winston.format.combine(winston.format.json(), winston.format.prettyPrint());
+        }
+
         this.logger = winston.createLogger({
+            format: winstonFormat,
             transports: [
                 new winston.transports.File(options.file),
                 new winston.transports.Console(options.console)

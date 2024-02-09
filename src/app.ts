@@ -12,34 +12,35 @@ import config from './config/index.js';
 
 const app = express();
 
+app.use(httpContext.middleware);
+app.use((req, res, next) => {
+    let reqId = uuid();
+
+    if(req.headers && req.headers['source-req-id']) {
+        reqId = req.headers['source-req-id'];
+    }
+
+    httpContext.set('reqId', reqId);
+    next();
+});
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 for await(const dep of Object.keys(projectDependencies)) {
-    console.log('dep', dep); 
+    try {
+        await projectDependencies[dep].init();
+    } catch(err) {
+        logger.error(`Unable to load project dependency ${dep}, err: ${err}`);
+    }
 }
 
-projectDependencies.DatabaseService.initDatabase().then(() => {
-    app.use(httpContext.middleware);
-    app.use((req, res, next) => {
-        let reqId = uuid();
+logger.log(`Loaded all project dependencies, starting app`);
 
-        if(req.headers && req.headers['source-req-id']) {
-            reqId = req.headers['source-req-id'];
-        }
+proxyHandler(app);
 
-        httpContext.set('reqId', reqId);
-        next();
-    });
+app.use('/api', routes(projectDependencies));
 
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
+app.use(ErrorHandler);
 
-    proxyHandler(app);
-
-    app.use('/api', routes(projectDependencies));
-
-    app.use(ErrorHandler);
-
-    app.listen(config.serverPort, () => logger.log(`http://localhost:${config.serverPort}`));
-
-}, (err) => {
-    logger.log(`db is not ready, err:${err}`);
-});
+app.listen(config.serverPort, () => logger.log(`http://localhost:${config.serverPort}`));
