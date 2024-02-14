@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint ./",
-    "start": "nodemon -x tsx src/app.ts",
+    "start": "tsx watch --inspect src/app.ts",
     "test": "jest",
     "build": "tsc",
     "serve": "node dist/app.js"
@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "app-root-path": "^2.1.0",
+    "awilix": "^10.0.1",
     "body-parser": "^1.18.3",
     "class-autobind": "^0.1.4",
     "dotenv-defaults": "^5.0.0",

@@ -10,7 +10,7 @@ export interface AddStudentRequest {
     enrollments: string[]
 }
 
-export default class AddStudentUseCase implements IUseCase<AddStudentRequest, unknown> {
+export default class AddStudentUseCase implements IUseCase<AddStudentRequest, Student> {
     private studentRepository: IStudentRepository;
     private crmServices: ICrmServices;
 
@@ -19,7 +19,7 @@ export default class AddStudentUseCase implements IUseCase<AddStudentRequest, un
         this.crmServices = crmServices;
     }
 
-    async execute(request?: AddStudentRequest): Promise<unknown> {
+    async execute(request?: AddStudentRequest): Promise<Student> {
         const student = await this.studentRepository.getByEmail(request?.email);
 
         if (!request?.firstName || !request?.lastName || !request?.email) {
@@ -36,6 +36,6 @@ export default class AddStudentUseCase implements IUseCase<AddStudentRequest, un
 
         await this.crmServices.notify(newStudent);
 
-        return 'student added successfully';
+        return newStudent;
     }
 }

@@ -1,3 +1,4 @@
-export default interface IDatabaseServices {
-    initDatabase(): Promise<unknown>;
+import IProjectDependency from './IProjectDependency.js';
+
+export default interface IDatabaseServices extends IProjectDependency {
 };

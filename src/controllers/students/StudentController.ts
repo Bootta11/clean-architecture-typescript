@@ -11,9 +11,9 @@ export default class StudentController {
     private studentRepository: InMemoryStudentRepository;
     private crmService: ICrmServices;
 
-    constructor(dependencies) {
-        this.studentRepository = dependencies.DatabaseService.studentRepository;
-        this.crmService = dependencies.CrmServices;
+    constructor(projectDependencies) {
+        this.studentRepository = projectDependencies.DatabaseService.studentRepository;
+        this.crmService = projectDependencies.CrmServices;
 
         autoBind.default(this);
     }

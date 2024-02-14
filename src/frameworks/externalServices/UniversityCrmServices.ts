@@ -1,7 +1,7 @@
 import ICrmServices from '../../application/contracts/ICrmServices.js';
 import IProjectDependency from '../../application/contracts/IProjectDependency.js';
 
-export default class UniversityCrmServices implements ICrmServices, IProjectDependency {
+export default class UniversityCrmService implements ICrmServices, IProjectDependency {
     
     async init(){};
 

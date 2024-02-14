@@ -28,36 +28,41 @@ class Logger {
     constructor() {
         let winstonFormat = winston.format.json();
         if (config.env === 'development') {
-            winstonFormat = winston.format.combine(winston.format.json(), winston.format.prettyPrint());
+            winstonFormat = winston.format.combine(
+                winston.format.json(),
+                winston.format.prettyPrint()
+            );
         }
 
         this.logger = winston.createLogger({
             format: winstonFormat,
             transports: [
                 new winston.transports.File(options.file),
-                new winston.transports.Console(options.console)
+                new winston.transports.Console(options.console),
             ],
             exitOnError: false, // do not exit on handled exceptions
         });
     }
 
-    prepareLogData(message:string, meta:unknown): {message, meta} {
-        if(!meta) {
+    prepareLogData(message: string, meta: unknown): { message; meta } {
+        if (!meta) {
             meta = {};
         }
 
-        if(typeof meta !== 'object') {
+        if (typeof meta !== 'object') {
             meta = {
-                value: meta
+                value: meta,
             };
         }
 
-        meta['reqId'] = httpContext.get('reqId');
+        if (httpContext.get('reqId') !== undefined) {
+            meta['reqId'] = httpContext.get('reqId');
+        }
 
         return {
             message,
-            meta
-        };
+            meta,
+        }; 
     }
 
     info(message, meta?) {
