@@ -17,7 +17,7 @@
                 // Ignore all dependencies (optional)
                 "${workspaceFolder}/node_modules/**",
             ],
-        }
+        },
         {
             "command": "npm start",
             "name": "Run npm start",
